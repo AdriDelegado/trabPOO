@@ -4,7 +4,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include "Beliche.h"
+#include "Escudo.h"
+#include "Maquina.h"
+#include "Ponte.h"
+#include "Propulsor.h"
+#include "Vida.h"
 using namespace std;
 class Sala;
 class Unidade;
@@ -34,8 +39,7 @@ public:
 	vector	<Sala *> getSalas();
 	
 	void reparaNave();
-	
-	
+	string criaSala(int v, int p, string nome);
 private:
 	bool verificaPosicao(int posicao);
 	bool verificaUnidadeExiste(string id);

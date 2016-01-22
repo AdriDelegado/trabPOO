@@ -80,7 +80,30 @@ bool Nave::verifacaOperadorPonte(){
 	}
 	return false;
 }
+string Nave::criaSala(int v, int p,string nome){
+	switch (v){
 
+		case 1:
+			Beliche *salaBeliche = new Beliche(nome, p);
+			return setSalas(salaBeliche);;
+			break;
+
+		case 2:
+			Propulsor *salaPropulsor = new Propulsor(nome, p);
+			return setSalas(salaPropulsor);;
+			break;
+
+		case 3:
+			break;
+		case 4:
+
+		break;
+
+		default:
+			return "SHIET";
+
+	}
+}
 void Nave::reparaNave(){ // em principio vai ser do tipo stringo pra devolver a mensagem
 	vector<Sala*>::iterator it;
 	vector<Unidade*>::iterator it2;

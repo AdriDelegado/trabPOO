@@ -12,12 +12,7 @@
 #include "Comando.h"
 #include "Consola.h"
 #include "Desenho.h"
-#include "Beliche.h"
-#include "Escudo.h"
-#include "Maquina.h"
-#include "Ponte.h"
-#include "Propulsor.h"
-#include "Vida.h"
+
 #include "Consola.h"
 #include "Comando.h"
 #include "Desenho.h"
@@ -67,6 +62,7 @@ public:
 	void cursorSetSala();
 	int veirifaPosica(int x, int y);
 	void limpaCampoInformacao();
+	
 	//int getTurno(){ return this->turno; };
 	//void setTurno(int nT){ this->turno = nT; };
 	//void showID(Nave *apolo1);

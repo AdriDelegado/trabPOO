@@ -17,7 +17,7 @@ public:
 	void setArg2(string sub);
 	void setArg3(string sub);
 	void setArg4(string sub);
-	void setPos(int pos{ this->pos = pos; };
+	void setPos(int pos){ this->pos = pos; };
 	
 	int getPos(){ return this->pos; };
 	

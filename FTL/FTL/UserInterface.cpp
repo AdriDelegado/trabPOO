@@ -179,130 +179,153 @@ void UserInterface::verificaComando(Comando &comObj)
 	limpaCampoInformacao();
 	c.setTextColor(c.VERDE);
 	if (comObj.getArg1() == "SET"){
-		if (comObj.getArg3() == "BELICHE"){
-			Beliche *salaBeliche = new Beliche("Beliche", comObj.getPos());
-			string msg = n.setSalas(salaBeliche);
+		if (comObj.getArg2() == "RED"){
+			//return 1;
+		}
+		else if (comObj.getArg2() == "CAPITAO"){
+			//return 2;
+		}
+		else if (comObj.getArg2() == "ROBO"){
+			//return 3;
+		}
+		else if (comObj.getArg2() == "BELICHE"){
+			//CRIA SALA ENVIA UM VALOR PRA A FUNCAO QUE VAI TAR NA NAVE
+			string msg = n.criaSala(1, comObj.getPos(), comObj.getArg2());
+			escreve.escreveNomeSala(comObj.getArg2(), comObj.getPos());
 			c.gotoxy(84, 4); // posicçao da introduçao dos camandos
 			cout << msg;
-			escreve.escreveNomeSala(comObj.getArg2(), comObj.getPos());
-		}
-		else if (comObj.getArg2() == "tripulante"){
-
-		}
-
-	if (){
-		if (comObj.getArg2() == "sala"){
 			
-				int pos = veirifaPosica(comObj.getX(), comObj.getY());
-				
-				
-				
-			}
 		}
-
-		else if (comObj.getArg2() == "tripulante"){
-			if (comObj.getArg3() == "capitao"){
-				int pos = veirifaPosica(comObj.getX(), comObj.getY());
-
-				setCache(getCache() + 1);
-				ostringstream s;
-				s << "C" << getCache();
-				string id = (s.str());
-				Capitao *novoCapitao = new Capitao(id);
-				novoCapitao->setIdSala(pos);
-				apolo1.setTripulacao(*novoCapitao);
-				escreve.desenhaTripulante(id, pos, 0);
-
-				c.gotoxy(84, 4); // posicçao da introduçao dos camandos
-				cout << novoCapitao->getNome() << " criado com sucesso";
-			}
-			if (comObj.getArg3() == "camisa_vermelha"){
-				int pos = veirifaPosica(comObj.getX(), comObj.getY());
-				setCache(getCache() + 1);
-				ostringstream s;
-				s << "V" << getCache();
-				string id = (s.str());
-				CamisaVermelha *novoCamisaVermelha = new CamisaVermelha(id);
-				novoCamisaVermelha->setIdSala(pos);
-				apolo1.setTripulacao(*novoCamisaVermelha);
-				escreve.desenhaTripulante(id, pos, 0);
-
-				c.gotoxy(84, 4); // posicçao da introduçao dos camandos
-				cout << novoCamisaVermelha->getNome() << " criado com sucesso";
-			}
-			if (comObj.getArg3() == "robo"){
-				int pos = veirifaPosica(comObj.getX(), comObj.getY());
-				setCache(getCache() + 1);
-				ostringstream s;
-				s << "R" << getCache();
-				string id = (s.str());
-				Robo *novoRobo = new Robo(id);
-				novoRobo->setIdSala(pos);
-				apolo1.setTripulacao(*novoRobo);
-				escreve.desenhaTripulante(id, pos, 0);
-
-				c.gotoxy(84, 4); // posicçao da introduçao dos camandos
-				cout << novoRobo->getNome() << " criado com sucesso";
-			}
-		}
-	}
-	else if (comObj.getArg1() == "move"){
-		for (int i = 0; i != apolo1.getTripulacao().size(); i++){
-			if (comObj.getArg2() == apolo1.getTripulacao().at(i)->getId()){
-				if (atoi(comObj.getArg3().c_str()) >= 1 && atoi(comObj.getArg3().c_str()) <= 12){
-
-
-					escreve.desenhaTripulante(comObj.getArg2(), atoi(comObj.getArg3().c_str()), apolo1.getTripulacao().at(i)->getIdSala());
-					apolo1.getTripulacao().at(i)->setIdSala(atoi(comObj.getArg3().c_str()));
-					//mostrar no iformação de onde saiu e para onde foi o tripulante
-				}
-			}
-		}
-	}
-	else if (comObj.getArg1() == "go"){
-		if (jogo.VerificaNaveAnda(apolo1) == true){
-
-			Propulsor *pE = (Propulsor*)apolo1.getRooms().at(0);
-			Propulsor *pD = (Propulsor*)apolo1.getRooms().at(5);
-
-			jogo.calculaMilhasActual(pD->getNivelPropulsor(), pE->getNivelPropulsor());
-
-
-			jogo.repararIntegridade(apolo1);
-			this->setTurno(this->getTurno() + 1);
-			if (getTurno() == 1 || getTurno() == 5 * getCache2()){
-				jogo.eventos(apolo1);
-				setCache2(getCache2() + 1);
-			}
-
-		}
-		else{
+		else if (comObj.getArg2() == "PROPULSOR"){
+			string msg = n.criaSala(2, comObj.getPos(), comObj.getArg2());
+			escreve.escreveNomeSala(comObj.getArg2(), comObj.getPos());
 			c.gotoxy(84, 4); // posicçao da introduçao dos camandos
-			cout << "Verificar Integridade:";
-			c.gotoxy(84, 5); // posicçao da introduçao dos camandos
-			cout << "sala das maquinas" << "propulsores";
-			c.gotoxy(84, 6); // posicçao da introduçao dos camandos
-			cout << "verificar tripulante na PONTE";
+			cout << msg;
 		}
+		
 
-	}
-	else if (comObj.getArg1() == "help"){
-		escreve.escreveComandos();
 
-	}
-	else if (comObj.getArg1() == "id"){
-		showID(apolo1);
-	}
-	else{
-		c.gotoxy(84, 4); // posicçao da introduçao dos camandos
-		cout << "comando introduzido nao valido";
-	}
-	if (jogo.VerificaFimJogo(apolo1) == true){
-		c.gotoxy(84, 4); // posicçao da introduçao dos camandos
-		cout << "fim Jogo";
-		exit(0);
-	}
+
+
+
+
+	////	
+
+	////if (){
+	////	if (comObj.getArg2() == "sala"){
+	////		
+	////			int pos = veirifaPosica(comObj.getX(), comObj.getY());
+	////			
+	////			
+	////			
+	////		}
+	////	}
+
+	////	else if (comObj.getArg2() == "tripulante"){
+	////		if (comObj.getArg3() == "capitao"){
+	////			int pos = veirifaPosica(comObj.getX(), comObj.getY());
+
+	////			setCache(getCache() + 1);
+	////			ostringstream s;
+	////			s << "C" << getCache();
+	////			string id = (s.str());
+	////			Capitao *novoCapitao = new Capitao(id);
+	////			novoCapitao->setIdSala(pos);
+	////			apolo1.setTripulacao(*novoCapitao);
+	////			escreve.desenhaTripulante(id, pos, 0);
+
+	////			c.gotoxy(84, 4); // posicçao da introduçao dos camandos
+	////			cout << novoCapitao->getNome() << " criado com sucesso";
+	////		}
+	////		if (comObj.getArg3() == "camisa_vermelha"){
+	////			int pos = veirifaPosica(comObj.getX(), comObj.getY());
+	////			setCache(getCache() + 1);
+	////			ostringstream s;
+	////			s << "V" << getCache();
+	////			string id = (s.str());
+	////			CamisaVermelha *novoCamisaVermelha = new CamisaVermelha(id);
+	////			novoCamisaVermelha->setIdSala(pos);
+	////			apolo1.setTripulacao(*novoCamisaVermelha);
+	////			escreve.desenhaTripulante(id, pos, 0);
+
+	////			c.gotoxy(84, 4); // posicçao da introduçao dos camandos
+	////			cout << novoCamisaVermelha->getNome() << " criado com sucesso";
+	////		}
+	////		if (comObj.getArg3() == "robo"){
+	////			int pos = veirifaPosica(comObj.getX(), comObj.getY());
+	////			setCache(getCache() + 1);
+	////			ostringstream s;
+	////			s << "R" << getCache();
+	////			string id = (s.str());
+	////			Robo *novoRobo = new Robo(id);
+	////			novoRobo->setIdSala(pos);
+	////			apolo1.setTripulacao(*novoRobo);
+	////			escreve.desenhaTripulante(id, pos, 0);
+
+	////			c.gotoxy(84, 4); // posicçao da introduçao dos camandos
+	////			cout << novoRobo->getNome() << " criado com sucesso";
+	////		}
+	////	}
+	////}
+	////else if (comObj.getArg1() == "move"){
+	////	for (int i = 0; i != apolo1.getTripulacao().size(); i++){
+	////		if (comObj.getArg2() == apolo1.getTripulacao().at(i)->getId()){
+	////			if (atoi(comObj.getArg3().c_str()) >= 1 && atoi(comObj.getArg3().c_str()) <= 12){
+
+
+	////				escreve.desenhaTripulante(comObj.getArg2(), atoi(comObj.getArg3().c_str()), apolo1.getTripulacao().at(i)->getIdSala());
+	////				apolo1.getTripulacao().at(i)->setIdSala(atoi(comObj.getArg3().c_str()));
+	////				mostrar no iformação de onde saiu e para onde foi o tripulante
+	////			}
+	////		}
+	////	}
+	////}
+	////else if (comObj.getArg1() == "go"){
+	////	if (jogo.VerificaNaveAnda(apolo1) == true){
+
+	////		Propulsor *pE = (Propulsor*)apolo1.getRooms().at(0);
+	////		Propulsor *pD = (Propulsor*)apolo1.getRooms().at(5);
+
+	////		jogo.calculaMilhasActual(pD->getNivelPropulsor(), pE->getNivelPropulsor());
+
+
+	////		jogo.repararIntegridade(apolo1);
+	////		this->setTurno(this->getTurno() + 1);
+	////		if (getTurno() == 1 || getTurno() == 5 * getCache2()){
+	////			jogo.eventos(apolo1);
+	////			setCache2(getCache2() + 1);
+	////		}
+
+	////	}
+	////	else{
+	////		c.gotoxy(84, 4); // posicçao da introduçao dos camandos
+	////		cout << "Verificar Integridade:";
+	////		c.gotoxy(84, 5); // posicçao da introduçao dos camandos
+	////		cout << "sala das maquinas" << "propulsores";
+	////		c.gotoxy(84, 6); // posicçao da introduçao dos camandos
+	////		cout << "verificar tripulante na PONTE";
+	////	}
+
+	////}
+	////else if (comObj.getArg1() == "help"){
+	////	escreve.escreveComandos();
+
+	////}
+	////else if (comObj.getArg1() == "id"){
+	////	showID(apolo1);
+	////}
+	////else{
+	////	c.gotoxy(84, 4); // posicçao da introduçao dos camandos
+	////	cout << "comando introduzido nao valido";
+	////}
+	////if (jogo.VerificaFimJogo(apolo1) == true){
+	////	c.gotoxy(84, 4); // posicçao da introduçao dos camandos
+	////	cout << "fim Jogo";
+	////	exit(0);
+	////}
 }
+
+
 
 //CURSOR STUFF
 
