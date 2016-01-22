@@ -40,6 +40,7 @@ void Sala::danificarSala(int dano){
 }
 
 
+
 		//quando uma unidade na sala X morre
 //string eliminaUnidade(Unidade *u){
 //	if (u != NULL){

@@ -2,11 +2,11 @@
 #include "Sala.h"
 
 //CONSTRUTOR PARA OS TRIPULANTES
-Unidade::Unidade(int hp, int reparador, int combatente, bool operador, int exoesqueleto, bool respira, int localizacao, string nome, string id, int posicaoSala){
+Unidade::Unidade(int hp, int reparador, int combatente, bool operador, int exoesqueleto, bool respira, int localizacao, string nome, string id, Sala *s){
 	this->hp = hp;
 	this->nome = nome;
 
-	this->posicaoSala = posicaoSala;
+	this->s = s;
 	this->id = id;
 	this->reparador = reparador;
 	this->combatente = combatente;
@@ -18,5 +18,10 @@ Unidade::Unidade(int hp, int reparador, int combatente, bool operador, int exoes
 Unidade::Unidade(){}
 Unidade::~Unidade(void){}
 
+void Unidade::inicioTurno(Nave *n){
+	reparaIntegridade(n);
+
+
+}
 
 

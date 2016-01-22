@@ -90,7 +90,7 @@ void Nave::reparaNave(){ // em principio vai ser do tipo stringo pra devolver a 
 		for (it2 = u.begin(); it2 != u.end(); it2++){
 			string idAux = (*it2)->getId();
 			vector<char> v(idAux.begin(), idAux.end());
-			if (idAux=="C" || idAux=="V"){ // se na sala tiver alguem com ID C oou V repara
+			if (idAux=="C" || idAux=="V"){ // se na sala tiver alguem com ID C ou V repara
 				cout << "Sala " << (*it)->getNome() << " foi reparada em " << (*it2)->reparaIntegridade((*it)) << " pontos";
 			}
 		}

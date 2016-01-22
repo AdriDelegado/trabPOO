@@ -12,7 +12,7 @@ class Red : public Unidade{
 
 public:
 
-	Red(string id, int posicaoSala);
+	Red(string id, Sala *s);
 	~Red();
 
 	//------GET--SET-------
@@ -25,8 +25,8 @@ public:
 	int getCombatente() { return this->combatente; }
 	void setExoesqueleto(int exoesqueleto) { this->exoesqueleto = exoesqueleto; }
 	int getExoesqueleto() { return this->exoesqueleto; }
-	void setPosicaoSala(int posicaoSala) { this->posicaoSala = posicaoSala; }
-	int getPosicaoSala() { return this->posicaoSala; }
+	void setPosicaoSala(Sala *s) { this->s= s; }
+	Sala *getPosicaoSala() { return this->s; }
 
 	void setId(string id) { this->id = id; }
 	string getId() { return this->id; }
@@ -38,6 +38,6 @@ public:
 	void setRespira(bool respira) { this->respira = respira; }
 	bool getRespira() { return this->respira; }
 
-	int reparaIntegridade(Sala *s);
+	int reparaIntegridade();
 };
 #endif

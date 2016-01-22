@@ -38,6 +38,8 @@ public:
 	bool getFogo() { return this->fogo; }
 	void setCurtoCircuito(bool curtoCircuito) { this->curtoCircuito = curtoCircuito; }
 	bool getCurtoCircuito() { return this->curtoCircuito; }
+	void	setAdjacenteSala();
+	vector<int> getAdjacenteSala();
 
 	void setNome(string nome) { this->nome = nome; }
 	string getNome() { return this->nome; }

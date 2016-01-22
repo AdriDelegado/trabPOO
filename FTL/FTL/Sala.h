@@ -23,6 +23,7 @@ protected:
 
 	string nome;
 
+	vector <int> adjacentes;
 	vector <Unidade*> unidades;
 public:
 	Sala();
@@ -84,8 +85,11 @@ public:
 	vector <Unidade*> getUnidades();
 	virtual string setUnidade(Unidade *u) = 0;
 	//FALTA
-	//pegar salas a volta funcao
-	//pegar quem esta na sala
+
+	
+	virtual void setAdjacenteSala() = 0;
+	virtual vector<int> getAdjacenteSala() = 0;
+	
 	void danificarSala(int dano);
 	
 	//string eliminaUnidade(Unidade *u);

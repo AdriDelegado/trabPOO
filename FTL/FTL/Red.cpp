@@ -1,18 +1,23 @@
 #include "Red.h"
 #include "Sala.h"
-Red::Red(string id, int posicaoSala) : Unidade(5, 1, 1, true, 0, true, 0, "Camisa Vermelha", id, posicaoSala){
+Red::Red(string id, Sala *s) : Unidade(5, 1, 1, true, 0, true, 0, "Camisa Vermelha", id, s){
 
 }
 
 Red::~Red(){}
 
-int Red::reparaIntegridade(Sala *s){
+int Red::reparaIntegridade(){
 	//verificar se a sala em que o RED esta é um dos propulsores
-	if (s->getIntegridade() < 100){
+	
+	if (s->getId() == 0) //ver se e propulsor
+		return 0;
+
+	else if(s->getIntegridade() < 100){
 		int newIntegridade = s->getIntegridade() + this->getReparador();
 		if (newIntegridade>100){
+			newIntegridade = 100 - s->getIntegridade();
 			s->setIntegridade(100);
-			return newIntegridade - 100;
+			return newIntegridade;
 		}
 		else{
 			s->setIntegridade(newIntegridade);
